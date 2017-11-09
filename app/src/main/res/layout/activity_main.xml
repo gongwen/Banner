@@ -11,24 +11,96 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="无指示器模式"
+            android:textSize="18sp" />
+
+        <com.gw.banner.BannerViewPager
+            android:id="@+id/noIndicatorBanner"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="200dp"></com.gw.banner.BannerViewPager>
 
-            <com.gw.banner.view.BannerViewPager
-                android:id="@+id/bannerViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></com.gw.banner.view.BannerViewPager>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="矩形指示器模式"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tvIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:text="1/5" />
+        <!---->
+        <com.gw.banner.SimpleIndicatorBanner
+            android:id="@+id/simpleRectIndicatorBanner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:indicatorHeight="2dp"
+            app:indicatorSelectedDrawable="#99000000"
+            app:indicatorUnSelectedDrawable="#33000000"
+            app:indicatorWidth="10dp" />
 
-        </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="圆形指示器模式"
+            android:textSize="18sp" />
+
+        <com.gw.banner.SimpleIndicatorBanner
+            android:id="@+id/simpleCircleIndicatorBanner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:indicatorHeight="7dp"
+            app:indicatorSelectedDrawable="@drawable/circle_white"
+            app:indicatorUnSelectedDrawable="@drawable/circle_gray"
+            app:indicatorWidth="7dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="数字指示器模式"
+            android:textSize="18sp" />
+
+        <com.gw.banner.NumberIndicatorBanner
+            android:id="@+id/numberIndicatorBanner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <!--  <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:padding="15dp"
+                             android:text="指示器模式"
+                             android:textSize="18sp" />
+
+                         <com.gw.banner.CircleIndicatorBanner
+                             android:id="@+id/circleIndicatorBanner"
+                             android:layout_width="match_parent"
+                             android:layout_height="200dp"></com.gw.banner.CircleIndicatorBanner>
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:padding="15dp"
+                             android:text="特殊指示器模式"
+                             android:textSize="18sp" />
+
+                      com.gw.banner.banner.SpacialCircleIndicatorBannernner
+                             android:id="@+id/spacialCircleIndicatorBanner"
+                             android:layout_width="match_parent"
+                             android:layout_height="200dpcom.gw.banner.banner.SpacialCircleIndicatorBannernner>
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:padding="15dp"
+                             android:text="数字模式"
+                             android:textSize="18sp" />
+
+                         <com.gw.banner.NumberIndicatorBanner
+                             android:id="@+id/numberIndicatorBanner"
+                             android:layout_width="match_parent"
+                             android:layout_height="200dp"></com.gw.banner.NumberIndicatorBanner>-->
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

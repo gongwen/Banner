@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 
 public interface ViewLoaderInterface<T, V extends View> extends Serializable {
-    void fillData(Context context, T data, V view);
+    void fillData(Context mContext, V mView, T mData, int mPosition);
 
-    V createView(Context context);
+    V createView(Context mContext);
 }

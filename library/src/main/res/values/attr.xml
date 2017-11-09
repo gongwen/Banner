@@ -4,4 +4,81 @@
         <attr name="delayTime" format="integer" />
         <attr name="isAutoPlay" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="NumberIndicatorBanner">
+        <attr name="delayTime" />
+        <attr name="isAutoPlay" />
+        <attr name="numTextSize" format="dimension" />
+        <attr name="numTextColor" format="reference|color" />
+        <attr name="numTextPadding" format="dimension" />
+        <attr name="numTextBackGround" format="reference|color" />
+        <attr name="hIndicatorMargin" format="dimension" />
+        <attr name="vIndicatorMargin" format="dimension" />
+        <attr name="indicatorGravity" />
+        <attr name="emptyBannerDrawable" />
+    </declare-styleable>
+    <declare-styleable name="SimpleIndicatorBanner">
+        <attr name="delayTime" />
+        <attr name="isAutoPlay" />
+        <attr name="indicatorSelectedDrawable" format="reference|color" />
+        <attr name="indicatorUnSelectedDrawable" format="reference|color" />
+        <attr name="indicatorWidth" format="dimension" />
+        <attr name="indicatorHeight" format="dimension" />
+        <attr name="indicatorSpace" format="dimension" />
+        <attr name="indicatorEdgeMargin" format="dimension" />
+        <attr name="emptyBannerDrawable" format="reference" />
+        <attr name="indicatorGravity">
+            <!-- Push object to the top of its container, not changing its size. -->
+            <flag name="top" value="0x30" />
+            <!-- Push object to the bottom of its container, not changing its size. -->
+            <flag name="bottom" value="0x50" />
+            <!-- Push object to the left of its container, not changing its size. -->
+            <flag name="left" value="0x03" />
+            <!-- Push object to the right of its container, not changing its size. -->
+            <flag name="right" value="0x05" />
+            <!-- Place object in the vertical center of its container, not changing its size. -->
+            <flag name="center_vertical" value="0x10" />
+            <!-- Grow the vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill_vertical" value="0x70" />
+            <!-- Place object in the horizontal center of its container, not changing its size. -->
+            <flag name="center_horizontal" value="0x01" />
+            <!-- Grow the horizontal size of the object if needed so it completely fills its container. -->
+            <flag name="fill_horizontal" value="0x07" />
+            <!-- Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. -->
+            <flag name="center" value="0x11" />
+            <!-- Grow the horizontal and vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill" value="0x77" />
+            <!-- Additional option that can be set to have the top and/or bottom edges of
+                 the child clipped to its container's bounds.
+                 The clip will be based on the vertical gravity: a top gravity will clip the bottom
+                 edge, a bottom gravity will clip the top edge, and neither will clip both edges. -->
+            <flag name="clip_vertical" value="0x80" />
+            <!-- Additional option that can be set to have the left and/or right edges of
+                 the child clipped to its container's bounds.
+                 The clip will be based on the horizontal gravity: a left gravity will clip the right
+                 edge, a right gravity will clip the left edge, and neither will clip both edges. -->
+            <flag name="clip_horizontal" value="0x08" />
+            <!-- Push object to the beginning of its container, not changing its size. -->
+            <flag name="start" value="0x00800003" />
+            <!-- Push object to the end of its container, not changing its size. -->
+            <flag name="end" value="0x00800005" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="BaseBannerView">
+        <attr name="delayTime" />
+        <attr name="isAutoPlay" />
+        <attr name="emptyBannerDrawable" />
+        <attr name="hIndicatorMargin" />
+        <attr name="vIndicatorMargin" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleIndicatorBanner">
+        <attr name="indicatorDrawableSelected" format="reference" />
+        <attr name="indicatorDrawableUnselected" format="reference" />
+        <attr name="indicatorWidth" />
+        <attr name="indicatorHeight" />
+        <attr name="hIndicatorPadding" format="dimension" />
+        <attr name="indicatorGravity" />
+    </declare-styleable>
 </resources>

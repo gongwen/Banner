@@ -85,6 +85,12 @@ public class OnPageChangeListenerWrapper implements ViewPager.OnPageChangeListen
         }
     }
 
+    public void clearOnPageChangeListenersWrapper() {
+        if (mOnPageChangeListeners != null) {
+            mOnPageChangeListeners.clear();
+        }
+    }
+
     private int toRealPosition(int position) {
         if (adapter != null) {
             position = Util.toRealPosition(adapter.getRealCount(), position);

@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Created by GongWen on 17/11/9.
- * 假如真实数据为ABCDEF，则在ViewPager中填充为FABCDEFA
+ * 假如真实数据为ABCDEF，则在ViewPager中填充为FABCDEFA,以实现循环滑动
  */
 
 public class BannerPagerAdapter<T, V extends View> extends PagerAdapter {
@@ -24,7 +24,11 @@ public class BannerPagerAdapter<T, V extends View> extends PagerAdapter {
     private ViewLoaderInterface<T, V> viewLoader;
     private final List<T> dataList = new ArrayList<>();
     private final List<V> mViews = new ArrayList<>();
-    private OnBannerItemClickListener mOnBannerItemClickListener;
+    private OnBannerItemClickListener<T, V> mOnBannerItemClickListener;
+
+    public BannerPagerAdapter(Context context) {
+        this(context, null);
+    }
 
     public BannerPagerAdapter(Context context, ViewLoaderInterface<T, V> viewLoader) {
         this(context, viewLoader, null);
@@ -35,8 +39,10 @@ public class BannerPagerAdapter<T, V extends View> extends PagerAdapter {
         this.viewLoader = viewLoader;
         if (dataList != null) {
             this.dataList.addAll(dataList);
+            if (viewLoader != null) {
+                createViewList();
+            }
         }
-        createViewList();
     }
 
     @Override
@@ -51,12 +57,13 @@ public class BannerPagerAdapter<T, V extends View> extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        final View mView = mViews.get(position);
+        final V mView = mViews.get(position);
         mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnBannerItemClickListener != null) {
-                    mOnBannerItemClickListener.OnBannerItemClick(Util.toRealPosition(getRealCount(), position));
+                    final int realPosition = Util.toRealPosition(getRealCount(), position);
+                    mOnBannerItemClickListener.OnBannerItemClick(mView, dataList.get(realPosition), realPosition);
                 }
             }
         });
@@ -69,33 +76,8 @@ public class BannerPagerAdapter<T, V extends View> extends PagerAdapter {
         container.removeView(mViews.get(position));
     }
 
-    public void createViewList() {
-        if (viewLoader == null) {
-            throw new IllegalArgumentException("ViewLoaderInterface must be not null!");
-        }
-        final int count = getRealCount();
-        if (count == 0) {
-            return;
-        }
-        if (count == 1) {
-            V mView = viewLoader.createView(context);
-            mViews.add(mView);
-            viewLoader.fillData(context, dataList.get(0), mView);
-            return;
-        }
-        for (int i = 0; i < count + 2; i++) {
-            V mView = viewLoader.createView(context);
-            mViews.add(mView);
-            T data;
-            if (i == 0) {
-                data = dataList.get(count - 1);
-            } else if (i == count + 1) {
-                data = dataList.get(0);
-            } else {
-                data = dataList.get(i - 1);
-            }
-            viewLoader.fillData(context, data, mView);
-        }
+    public int getRealCount() {
+        return dataList.size();
     }
 
     public void setData(List<T> dataList) {
@@ -108,11 +90,44 @@ public class BannerPagerAdapter<T, V extends View> extends PagerAdapter {
         notifyDataSetChanged();
     }
 
-    public int getRealCount() {
-        return dataList.size();
+    public void setViewLoader(ViewLoaderInterface<T, V> viewLoader) {
+        this.viewLoader = viewLoader;
     }
 
-    public void setOnBannerItemClickListener(OnBannerItemClickListener mOnBannerItemClickListener) {
+    public ViewLoaderInterface<T, V> getViewLoader() {
+        return viewLoader;
+    }
+
+    public void setOnBannerItemClickListener(OnBannerItemClickListener<T, V> mOnBannerItemClickListener) {
         this.mOnBannerItemClickListener = mOnBannerItemClickListener;
+    }
+
+    public void createViewList() {
+        if (viewLoader == null) {
+            throw new IllegalStateException("viewLoader must be not null,please set the viewLoader firstly!");
+        }
+        if (dataList.size() == 0) {
+            return;
+        }
+        final int count = getRealCount();
+        if (count == 1) {
+            V mView = viewLoader.createView(context);
+            mViews.add(mView);
+            viewLoader.fillData(context, mView, dataList.get(0), 0);
+            return;
+        }
+        for (int i = 0; i < count + 2; i++) {
+            V mView = viewLoader.createView(context);
+            mViews.add(mView);
+            int position;
+            if (i == 0) {
+                position = count - 1;
+            } else if (i == count + 1) {
+                position = 0;
+            } else {
+                position = i - 1;
+            }
+            viewLoader.fillData(context, mView, dataList.get(position), position);
+        }
     }
 }
