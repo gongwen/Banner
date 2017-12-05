@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.gw.banner.BannerViewPager;
-import com.gw.banner.adapter.BannerPagerAdapter;
 import com.gw.banner.NumberIndicatorBanner;
 import com.gw.banner.SimpleIndicatorBanner;
-import com.gw.banner.loader.ImageLoader;
+import com.gw.banner.adapter.BannerPagerAdapter;
+import com.gw.banner.loader.ImageViewLoader;
 import com.gw.banner.loader.ViewLoaderInterface;
 
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private SimpleIndicatorBanner<String, ImageView> simpleRectIndicatorBanner;
     private SimpleIndicatorBanner<String, TextView> simpleCircleIndicatorBanner;
     private NumberIndicatorBanner numberIndicatorBanner;
-    private ImageLoader imageLoader = new ImageLoader() {
+    private ImageViewLoader imageLoader = new ImageViewLoader() {
         @Override
         public void fillData(Context mContext, ImageView mView, String mData, int mPosition) {
             Glide.with(MainActivity.this).load(mData).into(mView);
@@ -49,12 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         //矩形指示器Banner
         simpleRectIndicatorBanner = findViewById(R.id.simpleRectIndicatorBanner);
-        simpleRectIndicatorBanner.setViewLoader(new ImageLoader() {
-            @Override
-            public void fillData(Context context, ImageView view, String data, int position) {
-                Glide.with(MainActivity.this).load(data).into(view);
-            }
-        });
+        simpleRectIndicatorBanner.setViewLoader(imageLoader);
         simpleRectIndicatorBanner.setData(datas);
         simpleRectIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->simpleIndicatorBanner"));
 
@@ -79,12 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         //数字指示器模式
         numberIndicatorBanner = findViewById(R.id.numberIndicatorBanner);
-        numberIndicatorBanner.setViewLoader(new ImageLoader() {
-            @Override
-            public void fillData(Context mContext, ImageView mView, String mData, int mPosition) {
-                Glide.with(MainActivity.this).load(mData).into(mView);
-            }
-        });
+        numberIndicatorBanner.setViewLoader(imageLoader);
         numberIndicatorBanner.setData(datas);
         numberIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->numberIndicatorBanner"));
 

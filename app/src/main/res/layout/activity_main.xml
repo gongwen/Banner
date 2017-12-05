@@ -66,41 +66,6 @@
         <com.gw.banner.NumberIndicatorBanner
             android:id="@+id/numberIndicatorBanner"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
-        <!--  <TextView
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:padding="15dp"
-                             android:text="指示器模式"
-                             android:textSize="18sp" />
-
-                         <com.gw.banner.CircleIndicatorBanner
-                             android:id="@+id/circleIndicatorBanner"
-                             android:layout_width="match_parent"
-                             android:layout_height="200dp"></com.gw.banner.CircleIndicatorBanner>
-
-                         <TextView
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:padding="15dp"
-                             android:text="特殊指示器模式"
-                             android:textSize="18sp" />
-
-                      com.gw.banner.banner.SpacialCircleIndicatorBannernner
-                             android:id="@+id/spacialCircleIndicatorBanner"
-                             android:layout_width="match_parent"
-                             android:layout_height="200dpcom.gw.banner.banner.SpacialCircleIndicatorBannernner>
-
-                         <TextView
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:padding="15dp"
-                             android:text="数字模式"
-                             android:textSize="18sp" />
-
-                         <com.gw.banner.NumberIndicatorBanner
-                             android:id="@+id/numberIndicatorBanner"
-                             android:layout_width="match_parent"
-                             android:layout_height="200dp"></com.gw.banner.NumberIndicatorBanner>-->
+            android:layout_height="200dp" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
