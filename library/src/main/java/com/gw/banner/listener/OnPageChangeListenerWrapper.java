@@ -24,7 +24,7 @@ public class OnPageChangeListenerWrapper implements ViewPager.OnPageChangeListen
             mOnPageChangeListener.onPageScrolled(position, offset, offsetPixels);
         }
         if (mOnPageChangeListeners != null) {
-            for (int i = 0, z = mOnPageChangeListeners.size(); i < z; i++) {
+            for (int i = 0; i < mOnPageChangeListeners.size(); i++) {
                 ViewPager.OnPageChangeListener listener = mOnPageChangeListeners.get(i);
                 if (listener != null) {
                     listener.onPageScrolled(position, offset, offsetPixels);
@@ -40,7 +40,7 @@ public class OnPageChangeListenerWrapper implements ViewPager.OnPageChangeListen
             mOnPageChangeListener.onPageSelected(position);
         }
         if (mOnPageChangeListeners != null) {
-            for (int i = 0, z = mOnPageChangeListeners.size(); i < z; i++) {
+            for (int i = 0; i < mOnPageChangeListeners.size(); i++) {
                 ViewPager.OnPageChangeListener listener = mOnPageChangeListeners.get(i);
                 if (listener != null) {
                     listener.onPageSelected(position);
@@ -55,7 +55,7 @@ public class OnPageChangeListenerWrapper implements ViewPager.OnPageChangeListen
             mOnPageChangeListener.onPageScrollStateChanged(state);
         }
         if (mOnPageChangeListeners != null) {
-            for (int i = 0, z = mOnPageChangeListeners.size(); i < z; i++) {
+            for (int i = 0; i < mOnPageChangeListeners.size(); i++) {
                 ViewPager.OnPageChangeListener listener = mOnPageChangeListeners.get(i);
                 if (listener != null) {
                     listener.onPageScrollStateChanged(state);

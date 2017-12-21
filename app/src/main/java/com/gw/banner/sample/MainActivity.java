@@ -11,7 +11,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.gw.banner.BannerViewPager;
 import com.gw.banner.NumberIndicatorBanner;
+import com.gw.banner.NumberTitleIndicatorBanner;
 import com.gw.banner.SimpleIndicatorBanner;
+import com.gw.banner.SimpleTitleIndicatorBanner;
 import com.gw.banner.adapter.BannerPagerAdapter;
 import com.gw.banner.loader.ImageViewLoader;
 import com.gw.banner.loader.ViewLoaderInterface;
@@ -25,11 +27,14 @@ public class MainActivity extends AppCompatActivity {
             "http://img3.imgtn.bdimg.com/it/u=2746561339,2034367002&fm=27&gp=0.jpg",
             "http://img0.imgtn.bdimg.com/it/u=4279113259,4201621527&fm=27&gp=0.jpg"
     );
+    final List<String> titleList = Arrays.asList("标题标题标题标题标题标题标题标题标题标题标题标题1", "标题标题标题标题标题标题标题标题标题标题2", "标题标题标题标题标题标题标题标题标题标题3");
     final List<Integer> colors = Arrays.asList(Color.LTGRAY, Color.DKGRAY, Color.GREEN);
     private BannerViewPager noIndicatorBanner;
     private SimpleIndicatorBanner<String, ImageView> simpleRectIndicatorBanner;
     private SimpleIndicatorBanner<String, TextView> simpleCircleIndicatorBanner;
-    private NumberIndicatorBanner numberIndicatorBanner;
+    private NumberIndicatorBanner<String, ImageView> numberIndicatorBanner;
+    private NumberTitleIndicatorBanner<String, ImageView> numberTitleIndicatorBanner;
+    private SimpleTitleIndicatorBanner<String, ImageView> simpleTitleIndicatorBanner;
     private ImageViewLoader imageLoader = new ImageViewLoader() {
         @Override
         public void fillData(Context mContext, ImageView mView, String mData, int mPosition) {
@@ -78,5 +83,16 @@ public class MainActivity extends AppCompatActivity {
         numberIndicatorBanner.setData(datas);
         numberIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->numberIndicatorBanner"));
 
+        //圆形+标题 指示器模式
+        simpleTitleIndicatorBanner = findViewById(R.id.simpleTitleIndicatorBanner);
+        simpleTitleIndicatorBanner.setViewLoader(imageLoader);
+        simpleTitleIndicatorBanner.setData(datas, titleList);
+        simpleTitleIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->numberTitleIndicatorBanner"));
+
+        //数字+标题 指示器模式
+        numberTitleIndicatorBanner = findViewById(R.id.numberTitleIndicatorBanner);
+        numberTitleIndicatorBanner.setViewLoader(imageLoader);
+        numberTitleIndicatorBanner.setData(datas, titleList);
+        numberTitleIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->numberTitleIndicatorBanner"));
     }
 }

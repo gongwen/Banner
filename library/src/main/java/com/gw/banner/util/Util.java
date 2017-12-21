@@ -2,11 +2,16 @@ package com.gw.banner.util;
 
 import android.content.Context;
 
+import java.util.List;
+
 /**
  * Created by GongWen on 17/11/9.
  */
 
 public class Util {
+    private Util() {
+    }
+
     /**
      * @param count(adapter.getRealCount())
      * @param position
@@ -38,5 +43,9 @@ public class Util {
     public static int sp2px(Context context, float sp) {
         final float scaledDensity = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (sp * scaledDensity + 0.5f);
+    }
+
+    public static boolean isEmpty(List mList) {
+        return mList == null || mList.size() == 0;
     }
 }

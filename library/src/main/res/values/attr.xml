@@ -4,28 +4,21 @@
         <attr name="delayTime" format="integer" />
         <attr name="isAutoPlay" format="boolean" />
     </declare-styleable>
-    <declare-styleable name="NumberIndicatorBanner">
+
+    <declare-styleable name="AIndicatorBanner">
         <attr name="delayTime" />
         <attr name="isAutoPlay" />
-        <attr name="numTextSize" format="dimension" />
-        <attr name="numTextColor" format="reference|color" />
-        <attr name="numTextPadding" format="dimension" />
-        <attr name="numTextBackGround" format="reference|color" />
-        <attr name="hIndicatorMargin" format="dimension" />
-        <attr name="vIndicatorMargin" format="dimension" />
-        <attr name="indicatorGravity" />
         <attr name="emptyBannerDrawable" />
     </declare-styleable>
+
     <declare-styleable name="SimpleIndicatorBanner">
-        <attr name="delayTime" />
-        <attr name="isAutoPlay" />
         <attr name="indicatorSelectedDrawable" format="reference|color" />
         <attr name="indicatorUnSelectedDrawable" format="reference|color" />
         <attr name="indicatorWidth" format="dimension" />
         <attr name="indicatorHeight" format="dimension" />
         <attr name="indicatorSpace" format="dimension" />
-        <attr name="indicatorEdgeMargin" format="dimension" />
-        <attr name="emptyBannerDrawable" format="reference" />
+        <attr name="hIndicatorEdgeMargin" format="dimension" />
+        <attr name="vIndicatorEdgeMargin" format="dimension" />
         <attr name="indicatorGravity">
             <!-- Push object to the top of its container, not changing its size. -->
             <flag name="top" value="0x30" />
@@ -64,21 +57,34 @@
         </attr>
     </declare-styleable>
 
-
-    <declare-styleable name="BaseBannerView">
-        <attr name="delayTime" />
-        <attr name="isAutoPlay" />
-        <attr name="emptyBannerDrawable" />
-        <attr name="hIndicatorMargin" />
-        <attr name="vIndicatorMargin" />
-    </declare-styleable>
-
-    <declare-styleable name="CircleIndicatorBanner">
-        <attr name="indicatorDrawableSelected" format="reference" />
-        <attr name="indicatorDrawableUnselected" format="reference" />
+    <declare-styleable name="NumberIndicatorBanner">
+        <attr name="indicatorBackground" format="reference|color" />
         <attr name="indicatorWidth" />
         <attr name="indicatorHeight" />
-        <attr name="hIndicatorPadding" format="dimension" />
+        <attr name="hIndicatorEdgeMargin" />
+        <attr name="vIndicatorEdgeMargin" />
         <attr name="indicatorGravity" />
+        <attr name="numTextSize" format="dimension" />
+        <attr name="numTextColor" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="SimpleTitleIndicatorBanner">
+        <attr name="titleIndicatorBackground" format="reference|color" />
+        <attr name="titleIndicatorHeight" format="dimension" />
+        <attr name="titleIndicatorTextSize" format="dimension" />
+        <attr name="titleIndicatorTextColor" format="reference|color" />
+        <attr name="titleIndicatorPaddingLeft" format="dimension" />
+        <attr name="titleIndicatorPaddingRight" format="dimension" />
+        <attr name="titleIndicatorSpace" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="NumberTitleIndicatorBanner">
+        <attr name="titleIndicatorBackground" />
+        <attr name="titleIndicatorHeight" />
+        <attr name="titleIndicatorTextSize"  />
+        <attr name="titleIndicatorTextColor"  />
+        <attr name="titleIndicatorPaddingLeft" />
+        <attr name="titleIndicatorPaddingRight" />
+        <attr name="titleIndicatorSpace" />
     </declare-styleable>
 </resources>

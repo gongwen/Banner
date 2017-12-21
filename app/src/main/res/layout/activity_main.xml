@@ -30,7 +30,6 @@
             android:text="矩形指示器模式"
             android:textSize="18sp" />
 
-        <!---->
         <com.gw.banner.SimpleIndicatorBanner
             android:id="@+id/simpleRectIndicatorBanner"
             android:layout_width="match_parent"
@@ -65,6 +64,34 @@
 
         <com.gw.banner.NumberIndicatorBanner
             android:id="@+id/numberIndicatorBanner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="圆形+标题指示器模式"
+            android:textSize="18sp" />
+
+        <com.gw.banner.SimpleTitleIndicatorBanner
+            android:id="@+id/simpleTitleIndicatorBanner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:indicatorHeight="7dp"
+            app:indicatorSelectedDrawable="@drawable/circle_blue"
+            app:indicatorUnSelectedDrawable="@drawable/circle_red"
+            app:indicatorWidth="7dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="数字+标题指示器模式"
+            android:textSize="18sp" />
+
+        <com.gw.banner.NumberTitleIndicatorBanner
+            android:id="@+id/numberTitleIndicatorBanner"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
     </LinearLayout>
