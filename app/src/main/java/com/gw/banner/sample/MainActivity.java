@@ -14,6 +14,7 @@ import com.gw.banner.NumberIndicatorBanner;
 import com.gw.banner.NumberTitleIndicatorBanner;
 import com.gw.banner.SimpleIndicatorBanner;
 import com.gw.banner.SimpleTitleIndicatorBanner;
+import com.gw.banner.SpecialSimpleIndicatorBanner;
 import com.gw.banner.adapter.BannerPagerAdapter;
 import com.gw.banner.loader.ImageViewLoader;
 import com.gw.banner.loader.ViewLoaderInterface;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private NumberIndicatorBanner<String, ImageView> numberIndicatorBanner;
     private NumberTitleIndicatorBanner<String, ImageView> numberTitleIndicatorBanner;
     private SimpleTitleIndicatorBanner<String, ImageView> simpleTitleIndicatorBanner;
+    private SpecialSimpleIndicatorBanner<String, ImageView> specialSimpleIndicatorBanner;
     private ImageViewLoader imageLoader = new ImageViewLoader() {
         @Override
         public void fillData(Context mContext, ImageView mView, String mData, int mPosition) {
@@ -94,5 +96,12 @@ public class MainActivity extends AppCompatActivity {
         numberTitleIndicatorBanner.setViewLoader(imageLoader);
         numberTitleIndicatorBanner.setData(datas, titleList);
         numberTitleIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->numberTitleIndicatorBanner"));
+
+
+        specialSimpleIndicatorBanner = findViewById(R.id.specialSimpleIndicatorBanner);
+        specialSimpleIndicatorBanner.setViewLoader(imageLoader);
+        specialSimpleIndicatorBanner.setData(datas);
+        specialSimpleIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->simpleIndicatorBanner"));
+
     }
 }

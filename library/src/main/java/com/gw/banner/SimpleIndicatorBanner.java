@@ -15,12 +15,15 @@ import com.gw.banner.util.BannerConfig;
 
 import java.util.List;
 
-public class SimpleIndicatorBanner<T, V extends View> extends AIndicatorBanner {
+public class SimpleIndicatorBanner<T, V extends View> extends AIndicatorBanner<T, V> {
     protected Drawable mSelectedDrawable;
     protected Drawable mUnSelectedDrawable;
     protected int mIndicatorWidth = BannerConfig.DEFAULT_SIMPLE_INDICATOR_WIDTH;
     protected int mIndicatorHeight = BannerConfig.DEFAULT_SIMPLE_INDICATOR_HEIGHT;
     protected int indicatorSpace = BannerConfig.INDICATOR_SPACE;
+    protected int hIndicatorEdgeMargin = BannerConfig.DEFAULT_INDICATOR_EDGE_MARGIN;
+    protected int vIndicatorEdgeMargin = BannerConfig.DEFAULT_INDICATOR_EDGE_MARGIN;
+    protected int indicatorGravity = BannerConfig.DEFAULT_SIMPLE_INDICATOR_GRAVITY;
 
     protected LinearLayout indicatorContainer;
 
@@ -38,10 +41,6 @@ public class SimpleIndicatorBanner<T, V extends View> extends AIndicatorBanner {
     }
 
     private void init(@NonNull Context context, @Nullable AttributeSet attrs) {
-        int hIndicatorEdgeMargin = BannerConfig.DEFAULT_INDICATOR_EDGE_MARGIN;
-        int vIndicatorEdgeMargin = BannerConfig.DEFAULT_INDICATOR_EDGE_MARGIN;
-        int indicatorGravity = BannerConfig.DEFAULT_SIMPLE_INDICATOR_GRAVITY;
-
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SimpleIndicatorBanner);
             mSelectedDrawable = a.getDrawable(R.styleable.SimpleIndicatorBanner_indicatorSelectedDrawable);
@@ -72,10 +71,10 @@ public class SimpleIndicatorBanner<T, V extends View> extends AIndicatorBanner {
         }
 
         indicatorContainer = findViewById(R.id.indicatorContainer);
-        initSimpleIndicatorAttribute(hIndicatorEdgeMargin, vIndicatorEdgeMargin, indicatorGravity);
+        initSimpleIndicatorAttribute();
     }
 
-    protected void initSimpleIndicatorAttribute(int hIndicatorEdgeMargin, int vIndicatorEdgeMargin, int indicatorGravity) {
+    protected void initSimpleIndicatorAttribute() {
         LayoutParams params = ((LayoutParams) indicatorContainer.getLayoutParams());
         params.setMargins(hIndicatorEdgeMargin, vIndicatorEdgeMargin, hIndicatorEdgeMargin, vIndicatorEdgeMargin);
         params.gravity = indicatorGravity;
@@ -159,6 +158,8 @@ public class SimpleIndicatorBanner<T, V extends View> extends AIndicatorBanner {
      * @param vIndicatorEdgeMargin
      */
     public void setIndicatorEdgeMargin(int hIndicatorEdgeMargin, int vIndicatorEdgeMargin) {
+        this.hIndicatorEdgeMargin = hIndicatorEdgeMargin;
+        this.vIndicatorEdgeMargin = vIndicatorEdgeMargin;
         LayoutParams params = ((LayoutParams) indicatorContainer.getLayoutParams());
         params.setMargins(hIndicatorEdgeMargin, vIndicatorEdgeMargin, hIndicatorEdgeMargin, vIndicatorEdgeMargin);
     }
@@ -187,6 +188,7 @@ public class SimpleIndicatorBanner<T, V extends View> extends AIndicatorBanner {
      * @param gravity
      */
     public void setIndicatorGravity(int gravity) {
+        this.indicatorGravity = gravity;
         ((LayoutParams) indicatorContainer.getLayoutParams()).gravity = gravity;
     }
     // </editor-fold>

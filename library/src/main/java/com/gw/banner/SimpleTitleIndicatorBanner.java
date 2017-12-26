@@ -25,7 +25,7 @@ import java.util.List;
  * Created by GongWen on 17/11/9.
  */
 
-public class SimpleTitleIndicatorBanner<T, V extends View> extends SimpleIndicatorBanner {
+public class SimpleTitleIndicatorBanner<T, V extends View> extends SimpleIndicatorBanner<T, V> {
 
     private RelativeLayout indicatorContainerView;
     private TextView titleTv;
@@ -107,7 +107,7 @@ public class SimpleTitleIndicatorBanner<T, V extends View> extends SimpleIndicat
     }
 
     @Override
-    protected void initSimpleIndicatorAttribute(int hIndicatorEdgeMargin, int vIndicatorEdgeMargin, int indicatorGravity) {
+    protected void initSimpleIndicatorAttribute() {
     }
 
     @Override

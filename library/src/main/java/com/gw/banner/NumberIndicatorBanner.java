@@ -26,7 +26,7 @@ import java.util.List;
  * Created by GongWen on 17/11/9.
  */
 
-public class NumberIndicatorBanner<T, V extends View> extends AIndicatorBanner {
+public class NumberIndicatorBanner<T, V extends View> extends AIndicatorBanner<T, V> {
 
     protected TextView indicatorTv;
 

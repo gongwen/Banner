@@ -94,5 +94,21 @@
             android:id="@+id/numberTitleIndicatorBanner"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="特殊指示器模式"
+            android:textSize="18sp" />
+
+        <com.gw.banner.SpecialSimpleIndicatorBanner
+            android:id="@+id/specialSimpleIndicatorBanner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:indicatorHeight="7dp"
+            app:indicatorSelectedDrawable="@drawable/circle_white"
+            app:indicatorUnSelectedDrawable="@drawable/ring_white"
+            app:indicatorWidth="7dp" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
