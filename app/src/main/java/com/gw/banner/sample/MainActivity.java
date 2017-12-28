@@ -24,11 +24,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     final List<String> datas = Arrays.asList(
+            "http://img0.imgtn.bdimg.com/it/u=4279113259,4201621527&fm=27&gp=0.jpg",
             "http://img4.imgtn.bdimg.com/it/u=52063953,1065301345&fm=27&gp=0.jpg",
-            "http://img3.imgtn.bdimg.com/it/u=2746561339,2034367002&fm=27&gp=0.jpg",
-            "http://img0.imgtn.bdimg.com/it/u=4279113259,4201621527&fm=27&gp=0.jpg"
+            "http://img3.imgtn.bdimg.com/it/u=2746561339,2034367002&fm=27&gp=0.jpg"
+
     );
-    final List<String> titleList = Arrays.asList("标题标题标题标题标题标题标题标题标题标题标题标题1", "标题标题标题标题标题标题标题标题标题标题2", "标题标题标题标题标题标题标题标题标题标题3");
+    final List<String> titleList = Arrays.asList("标题标题标题标题标题标题标题标题标题标题1", "标题标题标题标题标题标题标题标题标题标题2", "标题标题标题标题标题标题标题标题标题标题3");
     final List<Integer> colors = Arrays.asList(Color.LTGRAY, Color.DKGRAY, Color.GREEN);
     private BannerViewPager noIndicatorBanner;
     private SimpleIndicatorBanner<String, ImageView> simpleRectIndicatorBanner;
@@ -97,11 +98,34 @@ public class MainActivity extends AppCompatActivity {
         numberTitleIndicatorBanner.setData(datas, titleList);
         numberTitleIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->numberTitleIndicatorBanner"));
 
-
+        //特殊指示器模式
         specialSimpleIndicatorBanner = findViewById(R.id.specialSimpleIndicatorBanner);
         specialSimpleIndicatorBanner.setViewLoader(imageLoader);
         specialSimpleIndicatorBanner.setData(datas);
         specialSimpleIndicatorBanner.setOnBannerItemClickListener((mView, data, position) -> ToastUtil.toastShort(position + "-->simpleIndicatorBanner"));
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        noIndicatorBanner.startPlay();
+        simpleRectIndicatorBanner.startPlay();
+        simpleCircleIndicatorBanner.startPlay();
+        numberIndicatorBanner.startPlay();
+        simpleTitleIndicatorBanner.startPlay();
+        numberTitleIndicatorBanner.startPlay();
+        specialSimpleIndicatorBanner.startPlay();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        noIndicatorBanner.stopPlay();
+        simpleRectIndicatorBanner.stopPlay();
+        simpleCircleIndicatorBanner.stopPlay();
+        numberIndicatorBanner.stopPlay();
+        simpleTitleIndicatorBanner.stopPlay();
+        numberTitleIndicatorBanner.stopPlay();
+        specialSimpleIndicatorBanner.stopPlay();
     }
 }

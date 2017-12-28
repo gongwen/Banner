@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.gw.banner.util.Util;
+
 import java.util.List;
 
 public class SpecialSimpleIndicatorBanner<T, V extends View> extends SimpleIndicatorBanner<T, V> {
@@ -62,6 +64,11 @@ public class SpecialSimpleIndicatorBanner<T, V extends View> extends SimpleIndic
                 }
             }
         });
+    }
+
+    @Override
+    protected Drawable getDefaultUnSelectDrawable() {
+        return Util.getDrawable(getContext(), R.drawable.default_ring_white);
     }
 
     @Override

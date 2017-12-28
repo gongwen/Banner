@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.gw.banner.util.BannerConfig;
+import com.gw.banner.util.Util;
 
 import java.util.List;
 
@@ -70,6 +71,12 @@ public class SimpleIndicatorBanner<T, V extends View> extends AIndicatorBanner<T
             a.recycle();
         }
 
+        if (mSelectedDrawable == null) {
+            mSelectedDrawable = getDefaultSelectDrawable();
+        }
+        if (mUnSelectedDrawable == null) {
+            mUnSelectedDrawable = getDefaultUnSelectDrawable();
+        }
         indicatorContainer = findViewById(R.id.indicatorContainer);
         initSimpleIndicatorAttribute();
     }
@@ -97,6 +104,13 @@ public class SimpleIndicatorBanner<T, V extends View> extends AIndicatorBanner<T
         return R.layout.banner_indicator_simple;
     }
 
+    protected Drawable getDefaultSelectDrawable() {
+        return Util.getDrawable(getContext(), R.drawable.default_circle_white);
+    }
+
+    protected Drawable getDefaultUnSelectDrawable() {
+        return Util.getDrawable(getContext(), R.drawable.default_circle_gray);
+    }
     // <editor-fold desc="工具方法">
 
     public void setData(List<T> dataList) {

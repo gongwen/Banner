@@ -97,7 +97,7 @@ public class NumberIndicatorBanner<T, V extends View> extends AIndicatorBanner<T
         indicatorTv.setLayoutParams(params);
 
         if (indicatorBackground == null) {
-            indicatorBackground = ContextCompat.getDrawable(getContext(), R.drawable.default_num_indicator_bg);
+            indicatorBackground = ContextCompat.getDrawable(getContext(), R.drawable.default_bg_num_indicator);
         }
         ViewCompat.setBackground(indicatorTv, indicatorBackground);
 

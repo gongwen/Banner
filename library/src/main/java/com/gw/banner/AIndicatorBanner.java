@@ -106,6 +106,14 @@ public class AIndicatorBanner<T, V extends View> extends FrameLayout {
         bannerViewPager.setDelayTime(delayTime);
     }
 
+    public void startPlay() {
+        bannerViewPager.startPlay();
+    }
+
+    public void stopPlay() {
+        bannerViewPager.stopPlay();
+    }
+
     /**
      * Banner数据为空时显示的占位图
      *

@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="无指示器模式"
+            android:text="无指示器样式"
             android:textSize="18sp" />
 
         <com.gw.banner.BannerViewPager
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="矩形指示器模式"
+            android:text="矩形指示器样式"
             android:textSize="18sp" />
 
         <com.gw.banner.SimpleIndicatorBanner
@@ -43,23 +43,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="圆形指示器模式"
+            android:text="圆形指示器样式"
             android:textSize="18sp" />
 
         <com.gw.banner.SimpleIndicatorBanner
             android:id="@+id/simpleCircleIndicatorBanner"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:indicatorHeight="7dp"
-            app:indicatorSelectedDrawable="@drawable/circle_white"
-            app:indicatorUnSelectedDrawable="@drawable/circle_gray"
-            app:indicatorWidth="7dp" />
+            android:layout_height="200dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="数字指示器模式"
+            android:text="数字指示器样式"
             android:textSize="18sp" />
 
         <com.gw.banner.NumberIndicatorBanner
@@ -71,23 +67,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="圆形+标题指示器模式"
+            android:text="圆形+标题指示器样式"
             android:textSize="18sp" />
 
         <com.gw.banner.SimpleTitleIndicatorBanner
             android:id="@+id/simpleTitleIndicatorBanner"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:indicatorHeight="7dp"
             app:indicatorSelectedDrawable="@drawable/circle_blue"
-            app:indicatorUnSelectedDrawable="@drawable/circle_red"
-            app:indicatorWidth="7dp" />
+            app:indicatorUnSelectedDrawable="@drawable/circle_red" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="数字+标题指示器模式"
+            android:text="数字+标题指示器样式"
             android:textSize="18sp" />
 
         <com.gw.banner.NumberTitleIndicatorBanner
@@ -99,16 +93,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="特殊指示器模式"
+            android:text="特殊指示器样式"
             android:textSize="18sp" />
 
         <com.gw.banner.SpecialSimpleIndicatorBanner
             android:id="@+id/specialSimpleIndicatorBanner"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:indicatorHeight="7dp"
-            app:indicatorSelectedDrawable="@drawable/circle_white"
-            app:indicatorUnSelectedDrawable="@drawable/ring_white"
-            app:indicatorWidth="7dp" />
+            android:layout_height="200dp" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
