@@ -26,7 +26,7 @@ import java.util.List;
  * Created by GongWen on 17/11/9.
  */
 
-public class NumberIndicatorBanner<T, V extends View> extends AIndicatorBanner {
+public class NumberIndicatorBanner<T, V extends View> extends AIndicatorBanner<T, V> {
 
     protected TextView indicatorTv;
 
@@ -97,7 +97,7 @@ public class NumberIndicatorBanner<T, V extends View> extends AIndicatorBanner {
         indicatorTv.setLayoutParams(params);
 
         if (indicatorBackground == null) {
-            indicatorBackground = ContextCompat.getDrawable(getContext(), R.drawable.default_num_indicator_bg);
+            indicatorBackground = ContextCompat.getDrawable(getContext(), R.drawable.default_bg_num_indicator);
         }
         ViewCompat.setBackground(indicatorTv, indicatorBackground);
 

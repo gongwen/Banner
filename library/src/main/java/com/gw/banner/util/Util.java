@@ -1,6 +1,12 @@
 package com.gw.banner.util;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 
 import java.util.List;
 
@@ -47,5 +53,13 @@ public class Util {
 
     public static boolean isEmpty(List mList) {
         return mList == null || mList.size() == 0;
+    }
+
+    public static Drawable getDrawable(@NonNull Context mContext, @DrawableRes int id) {
+        return getDrawable(mContext.getResources(), id, mContext.getTheme());
+    }
+
+    public static Drawable getDrawable(@NonNull Resources res, @DrawableRes int id, @Nullable Resources.Theme theme) {
+        return ResourcesCompat.getDrawable(res, id, theme);
     }
 }

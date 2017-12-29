@@ -15,13 +15,18 @@ import com.gw.banner.util.WeakHandler;
 
 /**
  * Created by GongWen on 17/11/9.
+ * 满足以下三个条件才会开始自动轮播
+ * 1. isAutoPlay == true
+ * 2. getAdapter != null && getAdapter().getRealCount() > 1
+ * 3. 调用startPlay方法
  */
 
 public class BannerViewPager extends ViewPager {
     private OnPageChangeListenerWrapper mOnPageChangeListenerWrapper;
     private boolean isJustOnceFlag = true;
     private long delayTime;
-    private boolean isAutoPlay;
+    private boolean isAutoPlay = false;//是否可以自动轮播
+    private boolean isAutoPlaying = false;//是否正在自动轮播
 
     private WeakHandler handler = new WeakHandler();
 
@@ -115,44 +120,22 @@ public class BannerViewPager extends ViewPager {
     //<editor-fold desc="自动播放">
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (isAutoPlay) {
+        if (isShouldAutoPlay()) {
             int action = ev.getAction();
             if (action == MotionEvent.ACTION_DOWN) {
-                stopAutoPlay(true);
+                stopAutoPlayInner();
             } else if (action == MotionEvent.ACTION_UP
                     || action == MotionEvent.ACTION_CANCEL
                     || action == MotionEvent.ACTION_OUTSIDE) {
-                startAutoPlay(true);
+                startAutoPlayInner();
             }
         }
         return super.dispatchTouchEvent(ev);
     }
 
-    public void startAutoPlay() {
-        startAutoPlay(false);
-    }
-
-    public void stopAutoPlay() {
-        stopAutoPlay(false);
-    }
-
-    public void setAutoPlay(boolean isAutoPlay) {
-        if (this.isAutoPlay != isAutoPlay) {
-            this.isAutoPlay = isAutoPlay;
-            if (isAutoPlay) {
-                startAutoPlay(true);
-            } else {
-                stopAutoPlay(true);
-            }
-        }
-    }
-
-    /**
-     * @param isInnerCall 是否BannerViewPager内部调用
-     */
-    private void startAutoPlay(boolean isInnerCall) {
-        if (!isInnerCall && !isAutoPlay) {
-            isAutoPlay = true;
+    private void startAutoPlayInner() {
+        if (isAutoPlay && !isAutoPlaying) {
+            return;
         }
         if (isShouldAutoPlay()) {
             handler.removeCallbacks(task);
@@ -160,45 +143,31 @@ public class BannerViewPager extends ViewPager {
         }
     }
 
-    /**
-     * @param isInnerCall 是否BannerViewPager内部调用
-     */
-    private void stopAutoPlay(boolean isInnerCall) {
-        if (!isInnerCall && isAutoPlay) {
-            isAutoPlay = false;
-        }
+    private void stopAutoPlayInner() {
         handler.removeCallbacks(task);
     }
 
-    public boolean isAutoPlay() {
-        return isAutoPlay;
-    }
-
-    /**
-     * isAutoPlay == false 时，task停止
-     * isAutoPlay == true时，分以下两种情况
-     * 1. 手指touch屏幕时，task停止
-     * 2. count<=1时，task停止
-     */
     private final Runnable task = new Runnable() {
         @Override
         public void run() {
-            final int count = getAdapter().getRealCount();
-            int currentItem = getCurrentItem();
-            currentItem = currentItem % (count + 1) + 1;
-            if (currentItem == 1) {
-                setCurrentItem(currentItem, false);
-                handler.post(task);
-            } else {
-                setCurrentItem(currentItem);
-                handler.postDelayed(task, delayTime);
+            if (isShouldAutoPlay()) {
+                final int count = getAdapter().getRealCount();
+                int currentItem = getCurrentItem();
+                currentItem = currentItem % (count + 1) + 1;
+                if (currentItem == 1) {
+                    setCurrentItem(currentItem, false);
+                    handler.post(task);
+                } else {
+                    setCurrentItem(currentItem);
+                    handler.postDelayed(task, delayTime);
+                }
             }
         }
     };
 
     //</editor-fold>
     private boolean isShouldAutoPlay() {
-        return isAutoPlay && getAdapter() != null && getAdapter().getRealCount() > 1;
+        return isAutoPlay && isAutoPlaying && getAdapter() != null && getAdapter().getRealCount() > 1;
     }
 
     private final DataSetObserver dataSetObserver = new DataSetObserver() {
@@ -211,7 +180,7 @@ public class BannerViewPager extends ViewPager {
     private void onDataSetChanged() {
         if (getAdapter() != null && getAdapter().getRealCount() > 1) {
             setCurrentItem(1);
-            startAutoPlay(true);
+            startAutoPlayInner();
         }
     }
 
@@ -224,7 +193,37 @@ public class BannerViewPager extends ViewPager {
         }
     }
 
+    // <editor-fold desc="对外提供的方法">
+
+    /**
+     * 设置是否可以自动轮播
+     *
+     * @param isAutoPlay
+     */
+    public void setAutoPlay(boolean isAutoPlay) {
+        this.isAutoPlay = isAutoPlay;
+    }
+
+    public void startPlay() {
+        isAutoPlaying = true;
+        startAutoPlayInner();
+    }
+
+    public void stopPlay() {
+        isAutoPlaying = false;
+        stopAutoPlayInner();
+    }
+
+    /**
+     * @param delayTime 轮播时间间隔
+     */
     public void setDelayTime(long delayTime) {
         this.delayTime = delayTime;
     }
+
+    public boolean isAutoPlay() {
+        return isAutoPlay;
+    }
+
+    // </editor-fold>
 }
