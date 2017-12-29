@@ -17,7 +17,10 @@ import com.gw.banner.util.WeakHandler;
  * Created by GongWen on 17/11/9.
  * 满足以下三个条件才会开始自动轮播
  * 1. isAutoPlay == true
- * 2. getAdapter != null && getAdapter().getRealCount() > 1
+ * 2.
+ * <pre> {@code
+ *  getAdapter != null && getAdapter().getRealCount() > 1
+ * }</pre>
  * 3. 调用startPlay方法
  */
 

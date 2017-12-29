@@ -46,9 +46,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * This implementation is trickier, it will keep WeakReferences to runnables and messages,
  * and GC could collect them once WeakHandler instance is not referenced any more
  *
- *
  * @see android.os.Handler
- * <p>
+ *
  * Created by Dmytro Voronkevych on 17/06/2014.
  */
 @SuppressWarnings("unused")
