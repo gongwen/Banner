@@ -7,8 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 
-import com.gw.banner.R;
-
 public class BannerConfig {
     private static final float density = Resources.getSystem().getDisplayMetrics().density;
 
@@ -24,8 +22,6 @@ public class BannerConfig {
     public static final int INDICATOR_SPACE = (int) (5 * density);
     //指示器距离边缘
     public static final int DEFAULT_INDICATOR_EDGE_MARGIN = (int) (10 * density);
-    //Banner为空时，默认显示图片
-    public static int BANNER_EMPTY_RES_ID = R.drawable.no_banner;
 
     //Simple指示器默认值
     public static final int DEFAULT_SIMPLE_INDICATOR_WIDTH = (int) (7 * density);
