@@ -7,5 +7,5 @@ import android.view.View;
  */
 
 public interface OnBannerItemClickListener<T, V extends View> {
-    void OnBannerItemClick(V mView, T data, int position);
+    void OnBannerItemClick(V mView, T mData, int mPosition);
 }

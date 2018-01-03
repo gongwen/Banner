@@ -40,7 +40,8 @@ public class AIndicatorBanner<T, V extends View> extends FrameLayout {
     private void init(@NonNull Context context, @Nullable AttributeSet attrs) {
         boolean isAutoPlay = BannerConfig.IS_AUTO_PLAY;
         int delayTime = BannerConfig.TIME;
-        int emptyBannerResId = BannerConfig.BANNER_EMPTY_RES_ID;
+        //Banner为空时，默认显示图占位图
+        int emptyBannerResId = R.drawable.no_banner;
 
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AIndicatorBanner);

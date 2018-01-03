@@ -179,6 +179,11 @@ public class SimpleTitleIndicatorBanner<T, V extends View> extends SimpleIndicat
     }
 
     @Override
+    public void setData(List<T> dataList) {
+        throw new UnsupportedOperationException("The setData(List<T> dataList) is not supported,please use setData(List<T> dataList, List<String> titleList)!");
+    }
+
+    @Override
     public void setIndicatorEdgeMargin(int hIndicatorEdgeMargin, int vIndicatorEdgeMargin) {
         throw new UnsupportedOperationException("The edge margin of the indicator is not supported!");
     }

@@ -81,7 +81,7 @@ public class SpecialSimpleIndicatorBanner<T, V extends View> extends SimpleIndic
     }
 
     // <editor-fold desc="工具方法">
-
+    @Override
     public void setData(List<T> dataList) {
         adapter.setData(dataList);
         indicatorContainer.removeAllViews();
